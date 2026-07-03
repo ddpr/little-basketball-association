@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ds75ufx274fm7"]
+
+[ext_resource type="PackedScene" uid="uid://cgmco5so12co0" path="res://court.fbx" id="1_klx28"]
+[ext_resource type="Texture2D" uid="uid://d0ic3s1vk2b1i" path="res://assets/texture/Wood_Grain_DIFF.png" id="2_ih5bv"]
+[ext_resource type="PackedScene" uid="uid://c28gtahkaa0mr" path="res://player.tscn" id="3_acrlw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_acrlw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8eugd"]
+sky_material = SubResource("ProceduralSkyMaterial_acrlw")
+
+[sub_resource type="Environment" id="Environment_0uhp5"]
+background_mode = 2
+sky = SubResource("Sky_8eugd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fh0bj"]
+size = Vector3(2.52771, 0, 3.8891602)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klx28"]
+albedo_texture = ExtResource("2_ih5bv")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.10358004
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fh0bj"]
+size = Vector3(2.5309868, 0, 3.889)
+
+[node name="BasketballCourt" type="Node3D" unique_id=422682851]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=512720769]
+environment = SubResource("Environment_0uhp5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1531386549]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1751519046]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1408834277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010070801, 0, -0.0031738281)
+mesh = SubResource("BoxMesh_fh0bj")
+surface_material_override/0 = SubResource("StandardMaterial3D_klx28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=894606427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010488629, 0, 0)
+shape = SubResource("BoxShape3D_fh0bj")
+
+[node name="Player" parent="." unique_id=29498599 instance=ExtResource("3_acrlw")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 0.26916683, 0)
+
+[node name="court" parent="." unique_id=1435020262 instance=ExtResource("1_klx28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023416042, 0.0025595983, -0.06801063)

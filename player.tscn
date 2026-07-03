@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c28gtahkaa0mr"]
+
+[ext_resource type="Texture2D" uid="uid://dmtvtvwo43vhj" path="res://assets/texture/player/char_a_p1_0bas_humn_v00.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://d3dqgbu20wpg7" path="res://scripts/player/player.gd" id="1_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fh0bj"]
+radius = 0.08642578
+height = 0.403656
+
+[node name="Player" type="CharacterBody3D" unique_id=29498599]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=895654293]
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_4flbx")
+hframes = 8
+vframes = 8
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1728583899]
+transform = Transform3D(1, 0, 0, 0, 0.9517586, 0.30684772, 0, -0.30684772, 0.9517586, 0, 0.6443597, 1.7630795)
+fov = 56.580475
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1345743773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029403687, 0)
+shape = SubResource("CapsuleShape3D_fh0bj")
